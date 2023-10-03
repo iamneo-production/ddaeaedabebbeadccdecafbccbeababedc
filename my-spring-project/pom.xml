@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>spring-mvc-maven</artifactId>
+    <packaging>war</packaging>
+    <version>0.1</version>
+    <name>spring-mvc-maven Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <spring.version>5.2.9.RELEASE</spring.version>
+        <spring.security.version>5.5.0</spring.security.version>
+        <jstl.version>1.2</jstl.version>
+<maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>4.0.1</version> <!-- Use the appropriate version -->
+    <scope>provided</scope>
+</dependency>
+
+
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
+        <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${spring.version}</version> <!-- Replace with your Spring version -->
+        <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit -->
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version> <!-- or another JUnit version -->
+        <scope>test</scope>
+    </dependency>
+
+    <!-- MockMvc -->
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-test</artifactId>
+        <version>${spring.security.version}</version> <!-- Replace with your Spring Security version -->
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-test</artifactId>
+    <version>5.0.7.RELEASE</version> <!-- Use the appropriate version for your project -->
+    <scope>test</scope>
+</dependency>
+        
+    </dependencies>
+
+    <!-- Other configurations remain unchanged -->
+
+      <build>
+
+<resources>
+        <resource>
+            <directory>src/main/webapp</directory>
+            <targetPath>META-INF/resources</targetPath>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </resource>
+    </resources>
+
+      <testResources>
+        <testResource>
+            <directory>src/main/webapp</directory>
+            <includes>
+                <include>WEB-INF/**</include>
+            </includes>
+        </testResource>
+    </testResources>
+    <plugins>
+      <plugin>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-maven-plugin</artifactId>
+    <version>10.0.6</version>
+    <configuration>
+        <scanIntervalSeconds>10</scanIntervalSeconds>
+        <webApp>
+            <contextPath>/</contextPath>
+        </webApp>
+        <!-- Exclude Kotlin module-info classes -->
+        <metadata>
+            <excludePoms>true</excludePoms>
+        </metadata>
+    </configuration>
+</plugin>
+
+
+        <!-- Other plugins remain unchanged -->
+    </plugins>
+</build>
+
+</project>
